@@ -14,9 +14,12 @@ spring:
             client-secret: ${SPOTIFY_CLIENT_SECRET}
             client-name: Spotify
             scope:
-              - playlist-read-private,playlist-read-collaborative,playlist-modify-public,playlist-modify-private
+              - playlist-read-private
+              - playlist-read-collaborative
+              - playlist-modify-public
+              - playlist-modify-private
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8080/auth/spotify/callback
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
           google:
             client-id: ${GOOGLE_CLIENT_ID}
             client-secret: ${GOOGLE_CLIENT_SECRET}
@@ -24,16 +27,18 @@ spring:
             scope:
               - https://www.googleapis.com/auth/youtube
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8080/auth/google/callback
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
           spotify:
             authorization-uri: https://accounts.spotify.com/authorize
             token-uri: https://accounts.spotify.com/api/token
             user-info-uri: https://api.spotify.com/v1/me
+            user-name-attribute: id
           google:
             authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
             token-uri: https://oauth2.googleapis.com/token
             user-info-uri: https://www.googleapis.com/oauth2/v1/userinfo
+            user-name-attribute: sub
 
   redis:
     host: ${REDIS_HOST:localhost}
@@ -41,3 +46,9 @@ spring:
 
 server:
   port: 8080
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.security.oauth2: TRACE
+    com.melodyport: DEBUG

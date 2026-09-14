@@ -30,12 +30,12 @@ public class SpotifyUserService {
 
             HttpEntity<String> request = new HttpEntity<>(headers);
 
-            String responseJson = restTemplate.getForObject(USER_INFO_URL, String.class, request);
+            String responseJson = restTemplate.exchange(USER_INFO_URL, org.springframework.http.HttpMethod.GET, request, String.class).getBody();
             Map<String, Object> userInfo = objectMapper.readValue(responseJson, Map.class);
 
             return (String) userInfo.get("id");
         } catch (Exception e) {
-            throw new RuntimeException("Failed to fetch user info from Spotify", e);
+            throw new RuntimeException("Failed to fetch user info from Spotify: " + e.getMessage(), e);
         }
     }
 }
