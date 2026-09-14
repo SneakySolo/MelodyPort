@@ -23,10 +23,10 @@ import java.util.UUID;
 public class SpotifyAuthController {
     private static final Logger logger = LoggerFactory.getLogger(SpotifyAuthController.class);
 
-    @Value("${spring.security.oauth2.client.registration.spotify.client-id}")
+    @Value("${SPOTIFY_CLIENT_ID:}")
     private String clientId;
 
-    @Value("${spring.security.oauth2.client.registration.spotify.redirect-uri}")
+    @Value("${SPOTIFY_REDIRECT_URI:http://localhost:8080/auth/spotify/callback}")
     private String redirectUri;
 
     private final RedisSessionService sessionService;

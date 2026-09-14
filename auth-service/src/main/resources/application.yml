@@ -10,21 +10,21 @@ spring:
       client:
         registration:
           spotify:
-            client-id: ${SPOTIFY_CLIENT_ID}
-            client-secret: ${SPOTIFY_CLIENT_SECRET}
+            client-id: ${SPOTIFY_CLIENT_ID:}
+            client-secret: ${SPOTIFY_CLIENT_SECRET:}
             client-name: Spotify
             scope:
               - playlist-read-private,playlist-read-collaborative,playlist-modify-public,playlist-modify-private
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8080/auth/spotify/callback
+            redirect-uri: ${SPOTIFY_REDIRECT_URI:http://127.0.0.1:8080/auth/spotify/callback}
           google:
-            client-id: ${GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET}
+            client-id: ${GOOGLE_CLIENT_ID:}
+            client-secret: ${GOOGLE_CLIENT_SECRET:}
             client-name: Google
             scope:
               - https://www.googleapis.com/auth/youtube
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8080/auth/google/callback
+            redirect-uri: ${GOOGLE_REDIRECT_URI:http://127.0.0.1:8080/auth/google/callback}
         provider:
           spotify:
             authorization-uri: https://accounts.spotify.com/authorize
@@ -41,3 +41,10 @@ spring:
 
 server:
   port: 8081
+
+logging:
+  level:
+    com.melodyport: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security.oauth2: DEBUG
+    org.springframework.web.client: DEBUG
