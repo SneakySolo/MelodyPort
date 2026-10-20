@@ -8,32 +8,9 @@ spring:
   security:
     oauth2:
       client:
-        registration:
-          spotify:
-            client-id: ${SPOTIFY_CLIENT_ID:}
-            client-secret: ${SPOTIFY_CLIENT_SECRET:}
-            client-name: Spotify
-            scope:
-              - playlist-read-private,playlist-read-collaborative,playlist-modify-public,playlist-modify-private
-            authorization-grant-type: authorization_code
-            redirect-uri: ${SPOTIFY_REDIRECT_URI:http://127.0.0.1:8080/auth/spotify/callback}
-          google:
-            client-id: ${GOOGLE_CLIENT_ID:}
-            client-secret: ${GOOGLE_CLIENT_SECRET:}
-            client-name: Google
-            scope:
-              - https://www.googleapis.com/auth/youtube
-            authorization-grant-type: authorization_code
-            redirect-uri: ${GOOGLE_REDIRECT_URI:http://127.0.0.1:8080/auth/google/callback}
-        provider:
-          spotify:
-            authorization-uri: https://accounts.spotify.com/authorize
-            token-uri: https://accounts.spotify.com/api/token
-            user-info-uri: https://api.spotify.com/v1/me
-          google:
-            authorization-uri: https://accounts.google.com/o/oauth2/v2/auth
-            token-uri: https://oauth2.googleapis.com/token
-            user-info-uri: https://www.googleapis.com/oauth2/v1/userinfo
+        # Disable Spring's auto OAuth2 configuration
+        # We handle OAuth manually in SpotifyOAuth2Service and SpotifyAuthController
+        enabled: false
 
   redis:
     host: ${REDIS_HOST:localhost}
