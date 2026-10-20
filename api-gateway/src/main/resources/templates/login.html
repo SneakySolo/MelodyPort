@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MelodyPort - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 50px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .logo p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .login-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .spotify-btn {
+            background-color: #1DB954;
+        }
+
+        .spotify-btn:hover {
+            background-color: #1aa34a;
+        }
+
+        .google-btn {
+            background-color: #4285F4;
+        }
+
+        .google-btn:hover {
+            background-color: #1f71e7;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 30px 0;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        .login-info {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <div class="logo">
+        <h1>🎵 MelodyPort</h1>
+        <p>Transfer your playlists across music platforms</p>
+    </div>
+
+    <p style="text-align: center; color: #666; margin-bottom: 20px; font-size: 14px;">
+        Sign in to get started
+    </p>
+
+    <div class="login-options">
+        <a href="http://127.0.0.1:8081/auth/spotify/login" class="login-btn spotify-btn">
+            🎵 Login with Spotify
+        </a>
+
+        <a href="http://127.0.0.1:8081/auth/google/login" class="login-btn google-btn">
+            ▶ Login with Google
+        </a>
+    </div>
+
+    <div class="login-info">
+        <strong>ℹ️ How it works:</strong><br>
+        Click above to sign in with your Spotify or Google account. MelodyPort will securely authenticate with both services to transfer your playlists.
+    </div>
+</div>
+</body>
+</html>

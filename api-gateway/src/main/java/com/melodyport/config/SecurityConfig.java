@@ -17,14 +17,8 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authz -> authz
                         .requestMatchers("/health", "/error").permitAll()
-                        .requestMatchers("/oauth2/**", "/login/oauth2/**").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .oauth2Login(oauth2 -> oauth2
-                        .defaultSuccessUrl("/dashboard", true)
-                )
-                .logout(logout -> logout
-                        .logoutSuccessUrl("/")
+                        .requestMatchers("/auth/**").permitAll()
+                        .anyRequest().permitAll()
                 );
 
         return http.build();
