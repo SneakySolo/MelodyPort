@@ -17,7 +17,7 @@ public class SecurityConfig {
                         .anyRequest().permitAll()
                 );
                 // more to add config
-        // qwerty
+        // qwerty-qwerty
         return http.build();
     }
 }
