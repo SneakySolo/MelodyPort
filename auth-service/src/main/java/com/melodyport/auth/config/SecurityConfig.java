@@ -18,6 +18,7 @@ public class SecurityConfig {
                 );
                 // more to add config
         // qwerty-qwerty
+        // MERI MERJI 
         return http.build();
     }
 }
