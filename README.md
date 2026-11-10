@@ -1,2 +1,2 @@
-An application to transfer your Spotify Playlist to YT music </
+An application to transfer your Spotify Playlist to YT music </br>
 indefinite haitus :(
